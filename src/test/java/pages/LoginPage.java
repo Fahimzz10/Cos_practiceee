@@ -151,6 +151,261 @@ public class LoginPage extends BasePage {
         }
     }
 
+    public void VerifyValidLoginForCosAccounting()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("CosAccountingEmail")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+
+    public void VerifyValidLoginForCosPropertySupport()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("CosPropertySupport")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForCosDriverSupport()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("CosDriverSupport")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForCosTechSupport()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("CosTechSupport")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyAdmin()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyAdmin")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyManager()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyManager")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyAssistantManager()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyAsstMgr")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+
+    public void VerifyValidLoginForPropertyLeasingAgent()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyLeasingAgent")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyAssistantLeasingAgent()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyAsstLeasingAgent")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyMaintenance()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyMaintenance")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyAccounting()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyAccounting")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+    public void VerifyValidLoginForPropertyViewOnly()  {
+        String home = prop.getProperty("HomeURL");
+        String signin = prop.getProperty("BaseURL");
+        String Dashboard = prop.getProperty("DashboardURL");
+        String currURL = driver.getCurrentUrl();
+        System.out.println();
+        System.out.println(currURL);
+        if (currURL.equals(home) || currURL.equals(signin) || currURL.equals("data:,") ) {
+            HomePage homePage = new HomePage(driver);
+            Dashboard dashboard=new Dashboard(driver);
+            homePage.geturl();
+            Assert.assertTrue(EnterEmail(prop.getProperty("PropertyViewOnly")));
+            Assert.assertTrue(EnterPassword(prop.getProperty("PassForAll")));
+            Assert.assertTrue(ClickLoginButton());
+            Assert.assertTrue(dashboard.VerifyLoginMessage(msg.SuccessfulLoginMessage()));
+            Assert.assertTrue(VerifyUserLandsonDashboardAfterLogin());
+            System.out.println("Diverted to Login!");
+        } else {
+            System.out.println("Good To Go!");
+        }
+    }
+
     public boolean VerifyBlankPasswordErrorMessage(String expectedText) {
         try {
             assertEquals(errormessagepassrequire, expectedText);
