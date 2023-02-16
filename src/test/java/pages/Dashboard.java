@@ -96,11 +96,17 @@ public class Dashboard extends BasePage {
         urlCheck(prop.getProperty("LocationpageURL"));
         return true;
     }
-
-    public boolean clickOnChargers () throws InterruptedException {
+    public boolean clickOnChargers() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(prop.getProperty("ChrgerpageURL"));
         urlCheck(prop.getProperty("ChrgerpageURL"));
+        return true;
+    }
+
+    public boolean clickOnChargersPropertyAdmin() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(prop.getProperty("ChargerpageURLForPropertyAdmin"));
+        urlCheck(prop.getProperty("ChargerpageURLForPropertyAdmin"));
         return true;
     }
 

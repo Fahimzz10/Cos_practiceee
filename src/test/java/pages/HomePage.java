@@ -15,12 +15,17 @@ public class HomePage extends BasePage {
 
     //*********Page Variables*********
     String baseURL = prop.getProperty("BaseURL");
+    String baseURLPropertyAdmin = prop.getProperty("BaseURLPropertyAdmin");
 
     //*********Page Methods*********
     //Go to Homepage
     public void geturl(){
 
         driver.get(prop.getProperty("BaseURL"));
+    }
+    public void geturlPropertyAdmin(){
+
+        driver.get(prop.getProperty("BaseURLPropertyAdmin"));
     }
 
 }
