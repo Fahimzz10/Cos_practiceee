@@ -15,6 +15,7 @@ public class ChargerListPropertyAdmin extends BasePage {
 
 
     public static By LocationNA = By.xpath("//div[@class='wordBreak'][contains(.,'N/A')]");
+    public static By LocationUnderLocationColumn = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[4]/div");
     public static By SearchChargerField = By.xpath("//input[@placeholder='Search by charger & location title']");
     public static By searchargerbtn = By.xpath("//span[contains(text(),'Search')]");
     public static By detailsbutton = By.xpath("//button[@class='ant-btn ant-btn-default']//span[contains(text(),'Details')]");
@@ -23,18 +24,23 @@ public class ChargerListPropertyAdmin extends BasePage {
     public static By LoadMoreButton = By.xpath("//button[@class='ant-btn ant-btn-default primary-color']");
 
     public static By Rows = By.xpath("//tr[@class='ant-table-row ant-table-row-level-0']");
-    public static By TotalNum = By.xpath("//div[normalize-space()='Total 65']");
+    public static By TotalNum = By.xpath("//div[@class='total-count-under-table']");
 //    color: rgb(38, 38, 38); opacity: 0.6;
     public static By ChargerCountTop = By.xpath("//span[@class='showCount']");
-    public static By AddChargerBtn= By.xpath("//button[@type='button']//span[contains(text(),'Add New Charger')]");
-    public static By SelectLocation = By.id("rc_select_1");
-    public static By ChargerTitle = By.xpath("//div[@title='Atom charger']");
-
-    public static By PropertyName = By.xpath("//div[@class='wordBreak'][normalize-space()='Black Rock Real Estate-2']");
-
-    public static By PropertyAddress = By.xpath("//div[@class='wordBreak'][normalize-space()='17663 Dartmouth Dr, Lewes, DE 19958, United States']");
-    public static By LocationName = By.xpath("//div[@class='wordBreak'][normalize-space()='N/A']");
+    public static By ChargerColumn = By.xpath("//th[normalize-space()='Charger Title']");
+    public static By PropertyNameColumn = By.xpath("//th[normalize-space()='Property Name']");
+    public static By PropertyAddressColumn = By.xpath("//th[normalize-space()='Property Address']");
+    public static By LocationNameColumn = By.xpath("//th[normalize-space()='Location Name']");
+    public static By ActionColumn = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[5]");
+    public static By ChargerTitle = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[1]/div");
+    public static By PropertyName = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[2]/div");
+    public static By PropertyAddress = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[3]");
+    public static By LocationName = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[4]");
     public static By Action = By.xpath("//span[contains(text(),'Details')]");
+    public static By LeftShowingCharger = By.xpath("//div[@class='showing-count-under-table']");
+    public static By SelectedLocationFromOption = By.xpath("//div[@class='ant-select-item-option-content'][1]");
+    public static By SelectedLocationName = By.xpath("//span[@class='ant-select-selection-item']");
+    public static By SaveChargerButton = By.xpath("//span[normalize-space()='Save Charger']");
 
     public boolean ClickButton(By element, int delay) throws InterruptedException {
         Thread.sleep(delay);
@@ -74,12 +80,28 @@ public class ChargerListPropertyAdmin extends BasePage {
         }
         return true;
     }
+    public boolean verifyHeaderColumnAlternative() throws InterruptedException {
+        Thread.sleep(1000);
+        String ColumnTitleCharger = driver.findElement(ChargerColumn).getText();
+        String ColumnPropertyName = driver.findElement(PropertyNameColumn).getText();
+        String ColumnPropertyAddress = driver.findElement(PropertyAddressColumn).getText();
+        String ColumnLocationName = driver.findElement(LocationNameColumn).getText();
+        String ColumnAction = driver.findElement(ActionColumn).getText();
+        if (ColumnTitleCharger.contains("Charger Title") && ColumnPropertyName.contains("Property Name") && ColumnPropertyAddress.contains("Property Address") && ColumnLocationName.contains("Location") && ColumnAction.contains("Action") ) {
+            System.out.println("Verification Successful - All the Necessary Section From Header of Table is Showing");
+            return true;
+
+        } else {
+            System.out.println("Verification UnSuccessful. Something Went Wrong!!");
+            return false;
+        }
+    }
 
     public boolean verifyloadMoreButton() throws InterruptedException {
         Thread.sleep(1000);
         //waitVisibility(addchargerbtn);
         if (driver.findElement(LoadMoreButton).isDisplayed()) {
-            System.out.println("location NA is Displayed");
+            System.out.println("location More Button is Displayed");
             return true;
         } else {
             System.out.println("Something Went Wrong!!");
@@ -134,12 +156,11 @@ public class ChargerListPropertyAdmin extends BasePage {
     public boolean verifyLoadMoreButtonAction() throws InterruptedException{
         Thread.sleep(1000);
         int PrevRowCount = driver.findElements(Rows).size();
-        System.out.println(PrevRowCount);
         String LoadButtonText = driver.findElement(LoadMoreButton).getText();
         System.out.println(LoadButtonText);
-        String replacing = LoadButtonText.replaceAll("Load 3 More","3");
-        System.out.println(replacing);
-        int LoadButtonNumber = Integer.parseInt(replacing);
+        String KeepingNumbersOnly = LoadButtonText.replaceAll("[^0-9]","");
+        System.out.println(KeepingNumbersOnly);
+        int LoadButtonNumber = Integer.parseInt(KeepingNumbersOnly);
         System.out.println(LoadButtonNumber);
         int ExpectedRowCount = PrevRowCount+LoadButtonNumber;
         driver.findElement(LoadMoreButton).click();
@@ -170,6 +191,40 @@ public class ChargerListPropertyAdmin extends BasePage {
             System.out.println("Ohho mistake");
             return false;
         }
+    }
+    public boolean verifyEditedLocation() throws InterruptedException {
+        Thread.sleep(4000);
+        String SelectedLocation = driver.findElement(SelectedLocationName).getText();
+        System.out.println(SelectedLocation);
+        driver.findElement(SaveChargerButton).click();
+        Thread.sleep(2000);
+        String UpdatedLocationName = driver.findElement(LocationUnderLocationColumn).getText();
+        System.out.println(UpdatedLocationName);
+        if (SelectedLocation.equals(UpdatedLocationName)) {
+            System.out.println("Matched");
+            return true;
+        }
+        else {
+            System.out.println("Wronggggggg");
+            return false;
+        }
+
+    }
+    public boolean verifyTheChargerCountWithLeftSideOFLoadMoreButton() throws InterruptedException {
+        int DefaultRowCount = driver.findElements(Rows).size();
+        System.out.println(DefaultRowCount);
+        String LeftLoadButton = driver.findElement(LeftShowingCharger).getText().replaceAll("Showing ","");
+        int LeftLoadButtonNumber = Integer.parseInt(LeftLoadButton);
+        System.out.println(LeftLoadButtonNumber);
+        if (DefaultRowCount==LeftLoadButtonNumber){
+            System.out.println("Left side of Load More Button is Showing the Correct Number");
+            return true;
+        }
+        else{
+            System.out.println("Wrongggg!!!");
+            return false;
+        }
+
     }
     public boolean verifyTableDataAfterRefreshing() throws InterruptedException{
         int DefaultRowCount = driver.findElements(Rows).size();
@@ -207,6 +262,7 @@ public class ChargerListPropertyAdmin extends BasePage {
         }
     }
     public boolean verifyingBlankContent() throws InterruptedException{
+        Thread.sleep(1000);
         String ChargerTitleCheck = driver.findElement(ChargerTitle).getText();
         System.out.println(ChargerTitleCheck);
         String PropertyNameCheck = driver.findElement(PropertyName).getText();
@@ -222,7 +278,7 @@ public class ChargerListPropertyAdmin extends BasePage {
             return true;
         }
         else {
-            System.out.println("Vapla Ase");
+            System.out.println("Something went wrong");
             return false;
         }
     }
