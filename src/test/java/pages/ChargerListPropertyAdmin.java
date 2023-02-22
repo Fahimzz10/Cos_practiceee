@@ -34,8 +34,8 @@ public class ChargerListPropertyAdmin extends BasePage {
     public static By ActionColumn = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[5]");
     public static By ChargerTitle = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[1]/div");
     public static By PropertyName = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[2]/div");
-    public static By PropertyAddress = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[3]");
-    public static By LocationName = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/thead/tr/th[4]");
+    public static By PropertyAddress = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[3]/div");
+    public static By LocationName = By.xpath("//*[@id=\"__next\"]/main/section[2]/section/main/div[2]/div[4]/div/div/div/div/div/table/tbody/tr[2]/td[4]/div");
     public static By Action = By.xpath("//span[contains(text(),'Details')]");
     public static By LeftShowingCharger = By.xpath("//div[@class='showing-count-under-table']");
     public static By SelectedLocationFromOption = By.xpath("//div[@class='ant-select-item-option-content'][1]");
@@ -131,7 +131,6 @@ public class ChargerListPropertyAdmin extends BasePage {
         String total=driver.findElement(TotalNum).getText();
         System.out.println(total);
         String replacing = total.replaceAll("Total ","");
-        System.out.println(replacing);
         int TotalCount = Integer.parseInt(replacing);
         System.out.println(TotalCount);
 
@@ -142,7 +141,7 @@ public class ChargerListPropertyAdmin extends BasePage {
             } else {
                 break;
                 }
-            Thread.sleep(1000);
+            Thread.sleep(1500);
             int RowCount = driver.findElements(Rows).size();
             System.out.println(RowCount);
             Thread.sleep(1500);
