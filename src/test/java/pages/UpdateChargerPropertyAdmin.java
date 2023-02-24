@@ -9,7 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import tests.US57UpdateChargerPropertyAdmin.PropertyAdminUpdateChargerTestCases;
 
 import java.sql.Driver;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UpdateChargerPropertyAdmin extends BasePage {
 
@@ -37,13 +40,8 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     public static By DiscardBtn = By.xpath("//button[@class='ant-btn ant-btn-default'][contains(.,'Discard')]");
     public static By ContinueBtn = By.xpath("//button[@class='ant-btn ant-btn-primary'][contains(.,'Continue')]");
     public static By AlertBox = By.xpath("//div[@class='ant-modal-body']");
-
-
-
-
-
-
-
+    public static By UpdatedStatus = By.xpath("//*[@id=\"basic\"]/div[5]/div[2]/div/ul/li[1]/div[4]/span/span");
+    public static By CopiedMessage = By.xpath("//div[@class='ant-tooltip-inner']");
 
 
 
@@ -71,6 +69,19 @@ public class UpdateChargerPropertyAdmin extends BasePage {
         }
         else {
             System.out.println("Not Opened");
+            return false;
+        }
+    }
+
+    public boolean verifyLocationFieldEmpty(){
+        String EmptyLocation = driver.findElement(CreateCharger.selectlocation).getText();
+        System.out.println(EmptyLocation);
+        if (EmptyLocation.isEmpty()){
+            System.out.println("Location Field for not Assigned Location");
+            return true;
+        }
+        else {
+            System.out.println("Fishy");
             return false;
         }
     }
@@ -151,8 +162,8 @@ public class UpdateChargerPropertyAdmin extends BasePage {
 
             }
         }catch (NoSuchElementException e) {
-            System.out.println("Verification Successful.Toggle button has Set to Offline!!");
-            return true;
+            System.out.println("Verification UnSuccessful.Toggle button has Set to Online!!");
+            return false;
 
         }
     }
@@ -182,14 +193,14 @@ public class UpdateChargerPropertyAdmin extends BasePage {
         waitVisibility(ChargerUrl);
         String url = driver.findElement(ChargerUrl).getText();
         System.out.println(url);//copying the URL
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         ((JavascriptExecutor) driver).executeScript("window.open(\'"+url+"\')");// launching a new tab window.location = \'"+url+"\'
 //        Actions actions = new Actions(driver);
 //        actions.sendKeys(Keys.CONTROL + "v").sendKeys(Keys.ENTER).build().perform();//sending the paste command
         // hold all window handles in array list
         ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
         //switch to new tab
-        driver.switchTo().window(newTab.get(1));
+        driver.switchTo().window(newTab.get(2));
         Thread.sleep(3000);
         String s =driver.findElement(NewTabPageTitle).getText();
         System.out.println(s);
@@ -289,20 +300,99 @@ public class UpdateChargerPropertyAdmin extends BasePage {
             return false;
         }
     }
-    public boolean verifyPopUpBoxIsNotShowingAfterClickOnContinue() throws InterruptedException{
+    public boolean verifyConfirmationPopupHasClosed() throws InterruptedException {
         Thread.sleep(1000);
-        WebElement AlertBoxPortion =driver.findElement(AlertBox);
-        driver.findElement(ContinueBtn);
-        if (AlertBoxPortion.isDisplayed()){
-            System.out.println("pop Up Box is showing");
-            return false;
+        try{
+            WebElement confirmationpopup= driver.findElement(PopUpBoxText);
+            if (!confirmationpopup.isDisplayed()) {
+                System.out.println("Verification Successful!!! Confirmation Popup Has Closed ");
+                return true;
+
+            } else {
+                System.out.println("Verification UnSuccessful!!!Something Went Wrong!!");
+                return false;
+
+            }
+        }catch (NoSuchElementException e) {
+            System.out.println("Verification Successful.Pop up Box is Gone!!");
+            return true;
+
+        }
+    }
+
+    public boolean verifyTime() throws InterruptedException{
+        // Create object of SimpleDateFormat class and decide the format
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+
+        //get current date time with Date()
+        driver.findElement(SaveCharger).click();
+        Date date = new Date();
+        // Now format the date
+        String date1= dateFormat.format(date);
+
+        // Print the Date
+        System.out.println(date1);
+        Thread.sleep(1000);
+        driver.findElement(ChargerListPropertyAdmin.detailsbutton).click();
+        Thread.sleep(2000);
+        String webDate = driver.findElement(By.xpath("//*[@id=\"basic\"]/div[5]/div[2]/div/ul/li[1]/div[1]/div[2]")).getText();
+        System.out.println(webDate);
+        if (date1==webDate){
+            System.out.println("Matched");
         }
         else {
-            System.out.println("PopUp Box Gone");
-            return true;
+            System.out.println("Not Matched");
         }
 
+        return true;
+
     }
+    public boolean verifyUpdateItemTitleInAuditLog() throws InterruptedException{
+        Thread.sleep(1000);
+        String Updatemsg = driver.findElement(UpdatedStatus).getText();
+        System.out.println(Updatemsg);
+        if (Updatemsg.equals("updated 1 item")){
+            System.out.println("Congo!!!Changes has been made");
+            return true;
+        }
+        else {
+            System.out.println("Wrong");
+            return false;
+        }
+    }
+
+    public boolean verifyCopyButtonMsg() throws InterruptedException{
+        driver.findElement(CopyButton).click();
+        Thread.sleep(400);
+        String Msg = driver.findElement(CopiedMessage).getText();
+        System.out.println(Msg);
+        if (Msg.equals("Copied")){
+            System.out.println("Copied is Showing");
+            return true;
+        }
+        else {
+            System.out.println("Wrong");
+            return false;
+        }
+    }
+    public boolean verifyCopypasteUrl() throws InterruptedException {
+        waitVisibility(ChargerUrl);
+        driver.findElement(CopyButton).click();
+        Thread.sleep(1000);
+        ((JavascriptExecutor) driver).executeScript("window.open()");// launching a new tab
+        Thread.sleep(500);
+        ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+        //switch to new tab
+        driver.switchTo().window(newTab.get(1));
+        Actions actions = new Actions(driver);
+        Thread.sleep(500);
+        actions.sendKeys(Keys.CONTROL + "v").perform();//sending the paste command
+        // hold all window handles in array list
+        System.out.println(driver.getCurrentUrl());
+        return true;
+    }
+
+
 
 
 

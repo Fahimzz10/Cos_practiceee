@@ -766,7 +766,7 @@ public class EditChargersTestCases extends BaseTest {
 
     }
 
-  /*  @Test(priority = 32)//Done
+   @Test(priority = 32)//Done
     @TestParameters(testCaseId = {"TC-48"})
     public void TC_48_VerifyContinueandDiscardButtonsAreShowingAfterPressingCancelButtonFromEditChargerPage() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
@@ -782,9 +782,9 @@ public class EditChargersTestCases extends BaseTest {
         SearchChargers searchChargers=new SearchChargers(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        *//*Assert.assertTrue(dashboard.GotoDashboard());
+        //*Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickOnChargers());*//*
+        Assert.assertTrue(dashboard.clickOnChargers());
         Assert.assertTrue(editCompany.ClickonEditbutton());
         Assert.assertTrue(editChargers.writeLocationName(prop.getProperty("LocationName")));
         Assert.assertTrue(editChargers.clickonCancelButton());
@@ -809,9 +809,9 @@ public class EditChargersTestCases extends BaseTest {
         SearchChargers searchChargers=new SearchChargers(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        *//*Assert.assertTrue(dashboard.GotoDashboard());
+        //*Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickOnChargers());*//*
+        Assert.assertTrue(dashboard.clickOnChargers());
         Assert.assertTrue(editCompany.ClickonEditbutton());
         Assert.assertTrue(editChargers.writeLocationName(prop.getProperty("LocationName")));
         Assert.assertTrue(editChargers.clickonCancelButton());
@@ -837,9 +837,9 @@ public class EditChargersTestCases extends BaseTest {
         SearchChargers searchChargers=new SearchChargers(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        *//*Assert.assertTrue(dashboard.GotoDashboard());
+        //*Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickOnChargers());*//*
+        Assert.assertTrue(dashboard.clickOnChargers());
         Assert.assertTrue(editCompany.ClickonEditbutton());
         Assert.assertTrue(editChargers.writeLocationName(prop.getProperty("LocationName")));
         Assert.assertTrue(editChargers.clickonCancelButton());
@@ -865,9 +865,9 @@ public class EditChargersTestCases extends BaseTest {
         SearchChargers searchChargers=new SearchChargers(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-       *//*Assert.assertTrue(dashboard.GotoDashboard());
+       //*Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickOnChargers());*//*
+        Assert.assertTrue(dashboard.clickOnChargers());//*
         Assert.assertTrue(editCompany.ClickonEditbutton());
         Assert.assertTrue(editChargers.writeLocationName(prop.getProperty("LocationName")));
         Assert.assertTrue(editChargers.clickonCancelButton());
@@ -876,5 +876,5 @@ public class EditChargersTestCases extends BaseTest {
 
 
     }
-*/
+
 }

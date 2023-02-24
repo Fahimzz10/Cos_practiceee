@@ -51,6 +51,7 @@ public class ChargerListPropertyAdmin extends BasePage {
     }
 
     public boolean writeInputText(By element, String text, int delay) throws InterruptedException {
+        //waitVisibility(ChargerColumn);
         Thread.sleep(delay);
         writeText(element, text);
         return true;
