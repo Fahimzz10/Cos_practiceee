@@ -63,7 +63,7 @@ public class CosAdminChargerList extends BasePage {
         ChargerListPropertyAdmin chargerListPropertyAdmin =new ChargerListPropertyAdmin(driver);
         int randomNumber = objGenerator.nextInt(10000);
         System.out.println(randomNumber);
-        String temp="Testing Charger-"+randomNumber;
+        String temp="Test Charger-"+randomNumber;
         Assert.assertTrue(createcharger.writeInputText(CreateCharger.Chargername,temp,2000));
         Assert.assertTrue(createcharger.clickonPropertySelect());
         Assert.assertTrue(createcharger.writeInputText(CreateCharger.selectproperty,"East Avenue",2000));
@@ -97,5 +97,6 @@ public class CosAdminChargerList extends BasePage {
     }
 
 }
+
 
 

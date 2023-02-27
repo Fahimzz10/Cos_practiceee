@@ -156,7 +156,7 @@ public class CreateCharger extends BasePage {
         Thread.sleep(2000);
         //waitVisibility(addchargerbtn);
         if (driver.findElement(addchargerbtn).isDisplayed()) {
-            System.out.println("Add New Charger button has displayed");
+            System.out.println("Add New Charger button has displayed and Drawer is Closed Now");
             return true;
         } else {
             System.out.println("Something Went Wrong!!");

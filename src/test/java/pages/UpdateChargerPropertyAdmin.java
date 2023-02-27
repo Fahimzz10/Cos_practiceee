@@ -29,7 +29,6 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     public static By DetailsDrawerLocationInformation = By.xpath("//span[@class='drawerInsideTitle'][contains(text(),'Location Information')]");
     public static By DetailsDrawerAuditLog = By.xpath("//span[@class='drawerInsideTitle'][contains(text(),'Audit Log')]");
     public static By ToggleButton = By.xpath("//button[@role='switch']");
-
     public static By ChargerUrl = By.xpath("//*[@id=\"basic\"]/div[2]/div[4]/div/div[2]/div");
     public static By CopyButton = By.xpath("//*[@id=\"basic\"]/div[2]/div[4]/div/div[2]/button");
     public static By SaveCharger = By.xpath("//button[@type='button']//span[contains(text(),'Save Charger')]");
@@ -42,7 +41,8 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     public static By AlertBox = By.xpath("//div[@class='ant-modal-body']");
     public static By UpdatedStatus = By.xpath("//*[@id=\"basic\"]/div[5]/div[2]/div/ul/li[1]/div[4]/span/span");
     public static By CopiedMessage = By.xpath("//div[@class='ant-tooltip-inner']");
-
+    public static By WelcomePageTitleChargingFee = By.xpath("//div[@class='ant-col ant-col-16']//div[@class='pageTitle'][normalize-space()='Charging Fee']");
+    public static By CreateNewLocation = By.xpath("//span[normalize-space()='Or, create a new location']");
 
 
 
@@ -190,7 +190,7 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     }
 
     public boolean verifyChargerStatusInWelcomePage() throws InterruptedException{
-        waitVisibility(ChargerUrl);
+        waitelementtobedisplayed(ChargerUrl);
         String url = driver.findElement(ChargerUrl).getText();
         System.out.println(url);//copying the URL
         Thread.sleep(1500);
@@ -200,12 +200,15 @@ public class UpdateChargerPropertyAdmin extends BasePage {
         // hold all window handles in array list
         ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
         //switch to new tab
-        driver.switchTo().window(newTab.get(2));
-        Thread.sleep(3000);
+        driver.switchTo().window(newTab.get(1));
+        waitforPresence(NewTabPageTitle);
+        waitelementtobedisplayed(NewTabPageTitle);
         String s =driver.findElement(NewTabPageTitle).getText();
         System.out.println(s);
+        Thread.sleep(4000);
+        driver.close();
         //switch to parent window
-        driver.switchTo().window(newTab.get(0));
+//        driver.switchTo().window(newTab.get(0));
         if (s.contains("Thanks For Scanning")){
             System.out.println("Pass");
             return true;
@@ -230,7 +233,8 @@ public class UpdateChargerPropertyAdmin extends BasePage {
         Thread.sleep(3000);
         String s =driver.findElement(NewTabPageTitle).getText();
         System.out.println(s);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+        driver.close();
         //switch to parent window
         driver.switchTo().window(newTab.get(0));
         if (s.contains("We Are Sorry!")){
@@ -321,30 +325,28 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     }
 
     public boolean verifyTime() throws InterruptedException{
-        // Create object of SimpleDateFormat class and decide the format
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm aa");
-
-        //get current date time with Date()
         driver.findElement(SaveCharger).click();
+        // Create object of SimpleDateFormat class and decide the format
+        DateFormat dateFormat = new SimpleDateFormat("h:mm aa");
+        //get current date time with Date()
         Date date = new Date();
         // Now format the date
         String date1= dateFormat.format(date);
-
         // Print the Date
         System.out.println(date1);
         Thread.sleep(1000);
         driver.findElement(ChargerListPropertyAdmin.detailsbutton).click();
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         String webDate = driver.findElement(By.xpath("//*[@id=\"basic\"]/div[5]/div[2]/div/ul/li[1]/div[1]/div[2]")).getText();
         System.out.println(webDate);
-        if (date1==webDate){
+        if (date1.equals(webDate)){
             System.out.println("Matched");
+            return true;
         }
         else {
             System.out.println("Not Matched");
+            return false;
         }
-
-        return true;
 
     }
     public boolean verifyUpdateItemTitleInAuditLog() throws InterruptedException{
@@ -378,24 +380,16 @@ public class UpdateChargerPropertyAdmin extends BasePage {
     public boolean verifyCopypasteUrl() throws InterruptedException {
         waitVisibility(ChargerUrl);
         driver.findElement(CopyButton).click();
-        Thread.sleep(1000);
-        ((JavascriptExecutor) driver).executeScript("window.open()");// launching a new tab
-        Thread.sleep(500);
-        ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
-        //switch to new tab
-        driver.switchTo().window(newTab.get(1));
-        Actions actions = new Actions(driver);
-        Thread.sleep(500);
-        actions.sendKeys(Keys.CONTROL + "v").perform();//sending the paste command
-        // hold all window handles in array list
-        System.out.println(driver.getCurrentUrl());
+// Open a new tab
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+
+// Switch to the new tab
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+
+// Navigate to the URL in the address bar
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "v");
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.ENTER);
         return true;
     }
-
-
-
-
-
-
-
 }
