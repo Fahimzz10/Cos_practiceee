@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.SourceType;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import tests.US57UpdateChargerPropertyAdmin.PropertyAdminUpdateChargerTestCases;
 
@@ -42,7 +43,13 @@ public class EditChargerCosAdminUpdated extends BasePage {
     public static By DeactivateChargerButton = By.xpath("//span[text()=' Deactivate Charger']");
     public static By RequestDeactivationButton = By.xpath("//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']//span[contains(text(),'Request for Deactivation')]");
     public static By ViewLocation = By.xpath("//span[@class='underline cursor'][contains(text(),'View location')]");
-
+    public static By ProfileTop = By.xpath("//div[@class='primary-color mr-10 capitalizeIt']");
+    public static By ProfileOption = By.xpath("//div[normalize-space()='Profile']");
+    public static By AccountHolderName = By.xpath("//*[@id=\"rc-tabs-1-panel-1\"]/div/div/div[2]/div/span[1]");
+    public static By AuditLogAccName= By.xpath("//*[@id=\"basic\"]/div[6]/div[2]/div/ul/li[1]/div[4]/span");
+    public static By FirstName = By.xpath("//input[@placeholder='First Name']");
+    public static By LastName = By.xpath("//input[@placeholder='Last Name']");
+    public static By ChangeNameAuditLog = By.xpath("//*[@id=\"basic\"]/div[6]/div[2]/div/ul/li[2]/div[4]/span/div/div/span[4]");
 
 
 
@@ -65,10 +72,10 @@ public class EditChargerCosAdminUpdated extends BasePage {
         writeText(element, text);
         return true;
     }
-    public boolean verifyChargerTitleAboveEditDrawer(){
-        String ChargerTitle = "Toggle Location";
-        driver.findElement(ChargerListPropertyAdmin.SearchChargerField).sendKeys(ChargerTitle);
-        driver.findElement(ChargerListPropertyAdmin.searchargerbtn).click();
+    public boolean verifyChargerTitleAboveEditDrawer() throws InterruptedException {
+        waitforPresence(CosAdminChargerList.EditButton);
+        String ChargerTitle = driver.findElement(ChargerListPropertyAdmin.ChargerTitle).getText();
+        System.out.println(ChargerTitle);
         driver.findElement(CosAdminChargerList.EditButton).click();
         String Title = driver.findElement(DrawerTitle).getText();
         if (ChargerTitle.equals(Title)){
@@ -118,7 +125,7 @@ public class EditChargerCosAdminUpdated extends BasePage {
         String CommonTitle = driver.findElement(WelcomePageTitleChargingFee).getText();
         Thread.sleep(4000);
         driver.close();
-//        driver.switchTo().window(newTab.get(0));
+        driver.switchTo().window(newTab.get(0));
         if (CommonTitle.contains("Charging Fee")){
             System.out.println("Clipboard URL successfully navigate to expected TAB");
             return true;
@@ -159,9 +166,10 @@ public class EditChargerCosAdminUpdated extends BasePage {
     public boolean verifySearchLocationAndSelectFromDropdown() throws InterruptedException{
         WebElement ChargerNameField = driver.findElement(CreateCharger.selectlocation);
         String Location = "Ritchie";
+        Thread.sleep(1000);
         click(LocationFieldCrossButton);
 //        ChargerNameField.click();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
         ChargerNameField.sendKeys(Location);
         ChargerNameField.sendKeys(Keys.DOWN,Keys.ENTER);
         String SelectedChargerNameField = driver.findElement(ChargerListPropertyAdmin.SelectedLocationName).getText();
@@ -178,9 +186,11 @@ public class EditChargerCosAdminUpdated extends BasePage {
     }
 
     public boolean verifyCreateNewLocationDrawerFromEditDrawer() throws InterruptedException{
-        waitforPresence(CreateLocationDrawerTitle);
+        Thread.sleep(3000);
         if (driver.findElement(CreateLocationDrawerTitle).isDisplayed()){
             System.out.println("Create Location Drawer Opened");
+            Thread.sleep(1500);
+            click(CreateCharger.crossbtnofdrawer);
             return true;
         }
         else{
@@ -212,10 +222,10 @@ public class EditChargerCosAdminUpdated extends BasePage {
     public boolean verifyTheEditedInfoInTable() throws InterruptedException{
 //        String ToogleButtonStatusAfter = driver.findElement(UpdateChargerPropertyAdmin.ToggleButton).getAttribute(aria-checked);
         Random objGenerator = new Random();
-        int randomNumber = objGenerator.nextInt(100);
+        int randomNumber = objGenerator.nextInt(1000);
         click(CreateCharger.Chargername);
         WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
-        String EditedCharger = "Edited Charger "+randomNumber;
+        String EditedCharger = "Selenium "+randomNumber;
         click(CreateCharger.Chargername);;
         ChargerNameField.sendKeys(Keys.CONTROL,"a");
         ChargerNameField.sendKeys(Keys.DELETE);
@@ -247,24 +257,24 @@ public class EditChargerCosAdminUpdated extends BasePage {
         click(UpdateChargerPropertyAdmin.ToggleButton);
         click(CreateCharger.Chargername);
         WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
-        String EditedCharger = "Edited Charger "+randomNumber;
+        String EditedCharger = "Selenium "+randomNumber;
         click(CreateCharger.Chargername);;
         ChargerNameField.sendKeys(Keys.CONTROL,"a");
         ChargerNameField.sendKeys(Keys.DELETE);
         ChargerNameField.sendKeys(EditedCharger);
         WebElement ChargerLocationField = driver.findElement(CreateCharger.selectlocation);
-        String Location = "Ritchie Avenue 57892504";
+        String Location = "Rolfson Avenue 48474824";
         click(ChargerListPropertyAdmin.SelectedLocationName);
         Thread.sleep(1500);
         ChargerLocationField.sendKeys(Location);
         ChargerLocationField.sendKeys(Keys.ENTER);
         click(UpdateChargerPropertyAdmin.SaveCharger);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         click(CosAdminChargerList.EditButton);
-        Thread.sleep(10000);
+        Thread.sleep(2000);
         String ToogleButtonStatusAfter = driver.findElement(UpdateChargerPropertyAdmin.ToggleButton).getAttribute("aria-checked");
         System.out.println(ToogleButtonStatusAfter);
-        String Edchar = driver.findElement(CreateCharger.Chargername).getText();
+        String Edchar = driver.findElement(CreateCharger.Chargername).getAttribute("value");
         System.out.println(Edchar);
         String EdLoc = driver.findElement(ChargerListPropertyAdmin.SelectedLocationName).getText();
         System.out.println(EdLoc);
@@ -299,13 +309,24 @@ public class EditChargerCosAdminUpdated extends BasePage {
     }
 
     public boolean verifyNoDataMsgForSearchingInvalidData() throws InterruptedException{
-        WebElement ChargerLocField = driver.findElement(ChargerListPropertyAdmin.SelectedLocationName);
-        String Location = "dfgdfgfdj";
-        ChargerLocField.click();
+        WebElement ChargerNameField = driver.findElement(CreateCharger.selectlocation);
+        String Location = "dfssdfsd";
+        Thread.sleep(3500);
+        click(ChargerListPropertyAdmin.SelectedLocationName);
+//        ChargerNameField.click();
+        click(LocationFieldCrossButton);
         Thread.sleep(1500);
-        ChargerLocField.sendKeys(Location);
-        ChargerLocField.sendKeys(Keys.ENTER);
-        return true;
+        ChargerNameField.sendKeys(Location);
+        Thread.sleep(1000);
+        if (driver.findElement(CreateCharger.nodatafromsearch).isDisplayed()){
+            System.out.println("NO data is Showing");
+            return true;
+        }
+        else{
+            System.out.println("Wrong");
+            return false;
+        }
+
 
     }
 
@@ -331,13 +352,38 @@ public class EditChargerCosAdminUpdated extends BasePage {
         //get current date time with Date()
         Date date = new Date();
         // Now format the date
-        String date1= dateFormat.format(date);
+        String time= dateFormat.format(date);
         // Print the Date
-        System.out.println(date1);
+        System.out.println(time);
         Thread.sleep(1000);
         click(CosAdminChargerList.EditButton);
         Thread.sleep(10000);
-        String webDate = driver.findElement(By.xpath("//*[@id=\"basic\"]/div[5]/div[2]/div/ul/li[1]/div[1]/div[2]")).getText();
+        String webDate = driver.findElement(By.xpath("//*[@id=\"basic\"]/div[6]/div[2]/div/ul/li[1]/div[1]/div[2]")).getText();
+        System.out.println(webDate);
+        if (time.equals(webDate)){
+            System.out.println("Matched");
+            return true;
+        }
+        else {
+            System.out.println("Not Matched");
+            return false;
+        }
+
+    }
+    public boolean verifyUpdatedDate() throws InterruptedException{
+        click(ChargerListPropertyAdmin.SaveChargerButton);
+        // Create object of SimpleDateFormat class and decide the format
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd");
+        //get current date time with Date()
+        Date date = new Date();
+        // Now format the date
+        String date1= dateFormat.format(date);
+        // Print the Date
+        System.out.println(date1);
+        Thread.sleep(6000);
+        click(CosAdminChargerList.EditButton);
+        Thread.sleep(10000);
+        String webDate = driver.findElement(By.xpath("//*[@id=\"basic\"]/div[6]/div[2]/div/ul/li/div[1]/div[1]")).getText();
         System.out.println(webDate);
         if (date1.equals(webDate)){
             System.out.println("Matched");
@@ -348,5 +394,56 @@ public class EditChargerCosAdminUpdated extends BasePage {
             return false;
         }
 
+    }
+    public boolean verifyAccountNameInAuditLog() throws InterruptedException {
+        String ProfileNameAudiLog = driver.findElement(AuditLogAccName).getText();
+        System.out.println(ProfileNameAudiLog);
+        click(ChargerListPropertyAdmin.SaveChargerButton);
+        Thread.sleep(2000);
+        click(ProfileTop);
+        click(ProfileOption);
+        waitforPresence(FirstName);
+        waitforPresence(LastName);
+        String FName = driver.findElement(FirstName).getAttribute("value");
+        String LName = driver.findElement(LastName).getAttribute("value");
+        String FullName = FName+" "+LName;
+        System.out.println(FullName);
+        if (ProfileNameAudiLog.contains(FullName)){
+            System.out.println("GG");
+            return true;
+        }
+        else {
+            System.out.println("NOt WORKING");
+            return false;
+        }
+
+    }
+    public boolean verifyChangeNameInAuditLog() throws InterruptedException{
+        String ToogleButtonStatusBefore = driver.findElement(UpdateChargerPropertyAdmin.ToggleButton).getAttribute("aria-checked");
+        System.out.println(ToogleButtonStatusBefore);
+        Random objGenerator = new Random();
+        int randomNumber = objGenerator.nextInt(1000);
+        click(UpdateChargerPropertyAdmin.ToggleButton);
+        click(CreateCharger.Chargername);
+        WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
+        String EditedCharger = "Edited Charger "+randomNumber;
+        click(CreateCharger.Chargername);;
+        ChargerNameField.sendKeys(Keys.CONTROL,"a");
+        ChargerNameField.sendKeys(Keys.DELETE);
+        ChargerNameField.sendKeys(EditedCharger);
+        click(UpdateChargerPropertyAdmin.SaveCharger);
+        Thread.sleep(1000);
+        click(CosAdminChargerList.EditButton);
+        Thread.sleep(2000);
+        String Edchar = driver.findElement(ChangeNameAuditLog).getText();
+        System.out.println(Edchar);
+        if (Edchar.equals(EditedCharger)){
+            System.out.println("Edited Name is Showing in Audit Log Successfully");
+            return true;
+        }
+        else {
+            System.out.println("Fishy");
+            return false;
+        }
     }
 }

@@ -91,10 +91,10 @@ public class SearchChargersTestCases extends BaseTest {
         CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-       /* Assert.assertTrue(dashboard.GotoDashboard());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargers());
-        Assert.assertTrue(editCompany.ClickonSearchButton());*/
+        Assert.assertTrue(editCompany.ClickonSearchButton());
         Assert.assertTrue(searchChargers.verifPagehasRefreshafterpressingsearchbutton());
     }
 

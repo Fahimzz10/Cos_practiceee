@@ -167,8 +167,8 @@ public class SearchChargers extends BasePage {
         c.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get(prop.getProperty("ChrgerpageURL"));
-        String actualUrl= prop.getProperty("HomeURL");
+        driver.get(prop.getProperty("ChargerpageURLForPropertyAdmin"));
+        String actualUrl= prop.getProperty("HomeURLPropertyAdmin");
         createCompany.waitForSpinner();
         Thread.sleep(10000);
         String expectedUrl= driver.getCurrentUrl();
@@ -235,7 +235,7 @@ public class SearchChargers extends BasePage {
     public boolean verifyChargerWithProvidedTitleisShowing() {
         createCompany.waitForSpinner();
         WebElement name = driver.findElement(By.xpath("(//div[@class='wordBreak'])[1]"));
-        if( driver.findElement(By.xpath("(//div[@class='wordBreak'])[1]")).isDisplayed())
+        if( name.isDisplayed())
         {
             System.out.println("Verification Successful!!!Charger  with  the Provided  Title  is :" +name.getText());
             return true;

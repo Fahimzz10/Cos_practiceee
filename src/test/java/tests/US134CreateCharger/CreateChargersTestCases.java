@@ -612,7 +612,6 @@ public class CreateChargersTestCases extends BaseTest {
         Assert.assertTrue(createcharger.selectPropertyNameFromSelectPropertyDropdown());
         Assert.assertTrue(createcharger.clickonSaveChargerButton());
         Assert.assertTrue(createcharger.verifyChargerNameErrorMsgHasDisplayed());
-
 //
 //        Assert.assertTrue(company.VerifyInvalidEINNumberErrorMessage(msg.InvalidEINNumberErrorMsg()));
     }

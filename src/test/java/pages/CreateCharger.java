@@ -153,7 +153,7 @@ public class CreateCharger extends BasePage {
     }
     public boolean verifyAddNewChargerButtonHasDisplayed() throws InterruptedException {
         //company.waitForSpinner();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         //waitVisibility(addchargerbtn);
         if (driver.findElement(addchargerbtn).isDisplayed()) {
             System.out.println("Add New Charger button has displayed and Drawer is Closed Now");
