@@ -308,20 +308,24 @@ public class SearchandFilterProperties extends BasePage {
         return true;
     }
 
-    public boolean verifyAdvanceFilterDrawerHasClosed() {
+    public boolean verifyAdvanceFilterDrawerHasClosed() throws InterruptedException {
+        Thread.sleep(2000);
 
         try {
             WebElement name = driver.findElement(By.xpath("//span[@class='drawerTitle'][contains(.,'Advanced Filter')]"));
             if (!name.isDisplayed()) {
+                System.out.println("Advnace Filter Drawer has Closed");
+                return true;
             } else {
                 System.out.println("Verification UnSuccessful. Something Went Wrong!!");
+                return false;
 
             }
         } catch (NoSuchElementException e) {
-            System.out.println("Verification Successful.Advance Filetr Drawer has closed!!");
-
+            System.out.println("Verification Successful.Advance Filter Drawer has closed!!");
+            return true;
         }
-        return true;
+
     }
 
     public boolean verifyPropertiesArematchingWithSearchedProperty() {

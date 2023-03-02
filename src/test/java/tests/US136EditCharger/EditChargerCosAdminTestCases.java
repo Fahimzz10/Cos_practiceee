@@ -521,7 +521,7 @@ public class EditChargerCosAdminTestCases extends BaseTest {
         Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargers());
-        Assert.assertTrue(editChargerCosAdminUpdated.writeInSearchBar(ChargerListPropertyAdmin.SearchChargerField,"Edited Charger",1000));
+        Assert.assertTrue(editChargerCosAdminUpdated.writeInSearchBar(ChargerListPropertyAdmin.SearchChargerField,"Selenium",1000));
         Assert.assertTrue(createcharger.ClickButton(CreateCharger.searchargerbtn,1000));
         Assert.assertTrue(createcharger.ClickButton(CosAdminChargerList.EditButton,1000));
         Assert.assertTrue(editChargerCosAdminUpdated.verifyChangeNameInAuditLog());

@@ -169,8 +169,9 @@ public class EditChargerCosAdminUpdated extends BasePage {
         Thread.sleep(1000);
         click(LocationFieldCrossButton);
 //        ChargerNameField.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         ChargerNameField.sendKeys(Location);
+        Thread.sleep(2000);
         ChargerNameField.sendKeys(Keys.DOWN,Keys.ENTER);
         String SelectedChargerNameField = driver.findElement(ChargerListPropertyAdmin.SelectedLocationName).getText();
         System.out.println(SelectedChargerNameField);
@@ -419,14 +420,12 @@ public class EditChargerCosAdminUpdated extends BasePage {
 
     }
     public boolean verifyChangeNameInAuditLog() throws InterruptedException{
-        String ToogleButtonStatusBefore = driver.findElement(UpdateChargerPropertyAdmin.ToggleButton).getAttribute("aria-checked");
-        System.out.println(ToogleButtonStatusBefore);
         Random objGenerator = new Random();
-        int randomNumber = objGenerator.nextInt(1000);
+        int randomNumber = objGenerator.nextInt(10000);
         click(UpdateChargerPropertyAdmin.ToggleButton);
         click(CreateCharger.Chargername);
         WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
-        String EditedCharger = "Edited Charger "+randomNumber;
+        String EditedCharger = "Selenium "+randomNumber;
         click(CreateCharger.Chargername);;
         ChargerNameField.sendKeys(Keys.CONTROL,"a");
         ChargerNameField.sendKeys(Keys.DELETE);

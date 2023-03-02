@@ -436,14 +436,14 @@ public class SearchChargersTestCases extends BaseTest {
         CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        /*Assert.assertTrue(dashboard.GotoDashboard());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargers());
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchChargers.clickononPropertyDropdown());
         Assert.assertTrue(searchChargers.writePropertyName());
         Assert.assertTrue(searchLocation.ClickonPropertyNameFromDropDown());
-        Assert.assertTrue(searchCompany.ClickonApplyButton());*/
+        Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchproperty.verifyClearAllTagisShowingonPropertyPage());
     }
 
@@ -540,12 +540,7 @@ public class SearchChargersTestCases extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
-        EditCompany editCompany=new EditCompany(driver);
         SearchChargers searchChargers=new SearchChargers(driver);
-        CreateLocation createLocation=new CreateLocation(driver);
-        SearchLocation searchLocation=new SearchLocation(driver);
-        SearchandFilterProperties searchproperty=new SearchandFilterProperties(driver);
-        CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.GotoDashboard());

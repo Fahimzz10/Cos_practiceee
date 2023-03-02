@@ -1,5 +1,6 @@
 package pages;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -193,7 +194,13 @@ public class ChargerListPropertyAdmin extends BasePage {
         }
     }
     public boolean verifyEditedLocation() throws InterruptedException {
-        Thread.sleep(4000);
+        WebElement location = driver.findElement(CreateCharger.selectlocation);
+        ClickButton(CreateCharger.selectlocation,2000);
+        Thread.sleep(1000);
+        location.sendKeys("Charger");
+        Thread.sleep(1500);
+        location.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
         String SelectedLocation = driver.findElement(SelectedLocationName).getText();
         System.out.println(SelectedLocation);
         driver.findElement(SaveChargerButton).click();
@@ -202,6 +209,10 @@ public class ChargerListPropertyAdmin extends BasePage {
         System.out.println(UpdatedLocationName);
         if (SelectedLocation.equals(UpdatedLocationName)) {
             System.out.println("Matched");
+            ClickButton(detailsbutton,1000);
+            ClickButton(SelectedLocationName,1000);
+            ClickButton(EditChargerCosAdminUpdated.LocationFieldCrossButton,2000);
+            ClickButton(SaveChargerButton,1000);
             return true;
         }
         else {

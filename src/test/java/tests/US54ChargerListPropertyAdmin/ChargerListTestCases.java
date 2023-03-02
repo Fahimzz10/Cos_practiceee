@@ -70,7 +70,7 @@ public class ChargerListTestCases extends BaseTest {
         loginPage.VerifyValidLoginForPropertyAdmin();
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargersPropertyAdmin());
-        Assert.assertTrue(chargerListPropertyAdmin.writeInputText(ChargerListPropertyAdmin.SearchChargerField,"Atom charger",2000));
+        Assert.assertTrue(chargerListPropertyAdmin.writeInputText(ChargerListPropertyAdmin.SearchChargerField,"Automation Charger",4000));
         Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.searchargerbtn,2000));
         Assert.assertTrue(chargerListPropertyAdmin.verifyNAForNoLocation());
 
@@ -87,11 +87,11 @@ public class ChargerListTestCases extends BaseTest {
         loginPage.VerifyValidLoginForPropertyAdmin();
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargersPropertyAdmin());
-        Assert.assertTrue(chargerListPropertyAdmin.writeInputText(ChargerListPropertyAdmin.SearchChargerField,"Private Charger",4000));
+        Assert.assertTrue(chargerListPropertyAdmin.writeInputText(ChargerListPropertyAdmin.SearchChargerField,"Edited Charger",5000));
         Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.searchargerbtn,2000));
         Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.detailsbutton,2000));
-        Assert.assertTrue(createCharger.ClickButton(CreateCharger.selectlocation,3000));
-        Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.SelectedLocationFromOption,2000));
+//        Assert.assertTrue(createCharger.ClickButton(CreateCharger.selectlocation,3000));
+//        Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.SelectedLocationFromOption,2000));
         Assert.assertTrue(chargerListPropertyAdmin.verifyEditedLocation());
 
     }
@@ -104,6 +104,7 @@ public class ChargerListTestCases extends BaseTest {
         Dashboard dashboard=new Dashboard(driver);
         ChargerListPropertyAdmin chargerListPropertyAdmin = new ChargerListPropertyAdmin(driver);
         loginPage.VerifyValidLoginForPropertyAdmin();
+        Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickOnChargersPropertyAdmin());
         Assert.assertTrue(chargerListPropertyAdmin.ClickButton(ChargerListPropertyAdmin.detailsbutton,2000));
