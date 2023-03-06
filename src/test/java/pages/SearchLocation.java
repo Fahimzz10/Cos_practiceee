@@ -827,10 +827,12 @@ public class SearchLocation extends BasePage{
         if(count.isDisplayed())
         {
             System.out.println("Total Locations Showing After Removing Filter:" +count.getText());
+            return true;
         }else{
             System.out.println("Verification UnSuccessful!!!Something Went Wrong!!");
+            return false;
         }
-        return true;
+
     }
 
 

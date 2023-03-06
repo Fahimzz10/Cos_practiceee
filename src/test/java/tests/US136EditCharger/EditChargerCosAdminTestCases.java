@@ -514,7 +514,6 @@ public class EditChargerCosAdminTestCases extends BaseTest {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
-        ChargerListPropertyAdmin chargerListPropertyAdmin = new ChargerListPropertyAdmin(driver);
         CreateCharger createcharger = new CreateCharger(driver);
         EditChargerCosAdminUpdated editChargerCosAdminUpdated= new EditChargerCosAdminUpdated(driver);
         loginPage.VerifyValidLogin();

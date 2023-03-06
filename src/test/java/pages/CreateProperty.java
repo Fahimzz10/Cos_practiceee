@@ -612,7 +612,7 @@ public class CreateProperty extends BasePage {
 
     public boolean verifyCompanyNameIsShowingonIntheSelectCompanyDropdown() {
         waitVisibility(compnayname);
-        if (driver.findElement(By.xpath("(//div[@class='ant-select-item-option-content'][contains(.,'My Property Company')])[1]")).isDisplayed()) {
+        if (driver.findElement(By.xpath("(//div[@class='ant-select-item-option-content'][contains(.,'Selenium Company')])[1]")).isDisplayed()) {
             System.out.println("Verification Successful - Newly Created Company is Showing in the Dropdown");
 
         } else {
@@ -794,7 +794,7 @@ public class CreateProperty extends BasePage {
     public boolean verifyNewlyCreatedPropertisShowingonPropertyPage() {
         company.waitForSpinner();
        // waitVisibility(companyname);
-        if( driver.findElement(By.xpath("(//div[contains(.,'My New Property')])[9]")).isDisplayed())
+        if( driver.findElement(By.xpath("//div[contains(.,'Selenium Property 2')]")).isDisplayed()) ////div[contains(.,'My New Property')])[9]
         {
             System.out.println("Newly Created property is Showing on All properties Page");
         }else{
@@ -898,7 +898,8 @@ public class CreateProperty extends BasePage {
         return true;
     }
 
-    public boolean verifyMinimumSessionFeerrorMessage(String expectedText) {
+    public boolean verifyMinimumSessionFeerrorMessage(String expectedText) throws InterruptedException {
+        Thread.sleep(1500);
         waitelementtobedisplayed(minimumfeeerrmsg);
         assertEquals(minimumfeeerrmsg, expectedText);
         return true;

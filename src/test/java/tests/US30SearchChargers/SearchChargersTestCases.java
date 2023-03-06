@@ -509,9 +509,7 @@ public class SearchChargersTestCases extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
-        EditCompany editCompany=new EditCompany(driver);
         SearchChargers searchChargers=new SearchChargers(driver);
-        CreateLocation createLocation=new CreateLocation(driver);
         SearchLocation searchLocation=new SearchLocation(driver);
         SearchandFilterProperties searchproperty=new SearchandFilterProperties(driver);
         CreateProperty properties = new CreateProperty(driver);
@@ -756,7 +754,7 @@ public class SearchChargersTestCases extends BaseTest {
 
     @Test(priority = 35)//Done
     @TestParameters(testCaseId = {"TC-55"})
-    public void TC_54_CheckPreviouslySelectedInputFieldsAreShowingAfterOpeningAdvanceFilterDrawerAgain () throws InterruptedException, IOException {
+    public void TC_54_CheckPreviouslySelectedInputFieldsAreShowingAfterOpeningAdvanceFilterDrawerAgain () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
@@ -786,7 +784,7 @@ public class SearchChargersTestCases extends BaseTest {
 
     @Test(priority = 36)//Done
     @TestParameters(testCaseId = {"TC-56"})
-    public void TC_56_checkWhathappensWhenAdmincliksOnresetAllButtonAfterSelectingMltipleFiltersFromAdvanceFilerDrawer () throws InterruptedException, IOException {
+    public void TC_56_checkWhathappensWhenAdmincliksOnresetAllButtonAfterSelectingMltipleFiltersFromAdvanceFilerDrawer () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);

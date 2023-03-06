@@ -397,7 +397,7 @@ public class AdvanceFilterPropertyAdminTestCases extends BaseTest {
 
     @Test(priority = 23)//Done
     @TestParameters(testCaseId = {"TC-33"})
-    public void TC_33_verifyLocationNameIsShowingInDropdownAfterTypingValidLocationName () throws InterruptedException, IOException {
+    public void TC_33_verifyLocationNameIsShowingInDropdownAfterTypingValidLocationName () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
@@ -453,7 +453,7 @@ public class AdvanceFilterPropertyAdminTestCases extends BaseTest {
 
     @Test(priority = 26)//Done
     @TestParameters(testCaseId = {"TC-36"})
-    public void TC_36_VerifyLocationTagIsShowingOnChargerPageAfterSelectingLocationFromAdvanceFilter () throws InterruptedException, IOException {
+    public void TC_36_VerifyLocationTagIsShowingOnChargerPageAfterSelectingLocationFromAdvanceFilter () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
@@ -472,7 +472,7 @@ public class AdvanceFilterPropertyAdminTestCases extends BaseTest {
 
     @Test(priority = 27)//Done
     @TestParameters(testCaseId = {"TC-37"})
-    public void TC_37_CheckWhatHappensWhenAdminSearchChargerBySelectingMultipleTags () throws InterruptedException, IOException {
+    public void TC_37_CheckWhatHappensWhenAdminSearchChargerBySelectingMultipleTags () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchCompany searchCompany=new SearchCompany(driver);

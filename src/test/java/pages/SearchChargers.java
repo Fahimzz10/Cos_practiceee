@@ -334,10 +334,11 @@ public class SearchChargers extends BasePage {
         if( driver.findElement(By.xpath("//div[@class='ant-select-item-option-content'][contains(.,'Atom power station')]")).isDisplayed())
         {
             System.out.println("Verification Successful!!!Property  Name  is  Showing in the Dropdown");
+            return true;
         }else{
             System.out.println("Verification UnSuccessful!!!Something Went Wrong!!");
+            return false;
         }
-        return true;
     }
 
     public boolean verifyTagHasbeenremovedAfterClickingonCrossButton() {

@@ -374,7 +374,7 @@ public class EditChargerCosAdminUpdated extends BasePage {
     public boolean verifyUpdatedDate() throws InterruptedException{
         click(ChargerListPropertyAdmin.SaveChargerButton);
         // Create object of SimpleDateFormat class and decide the format
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-M-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");
         //get current date time with Date()
         Date date = new Date();
         // Now format the date
