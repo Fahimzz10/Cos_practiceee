@@ -159,8 +159,8 @@ public class CreateLocation extends BasePage {
 
     public boolean clickSaveLocationButton() throws InterruptedException {
         Thread.sleep(3000);
-        waitVisibility(savelocationbtn);
-        waitelemtclickable(savelocationbtn);
+        //waitVisibility(savelocationbtn);
+        //waitelemtclickable(savelocationbtn);
         click(savelocationbtn);
         return true;
     }
@@ -330,9 +330,10 @@ public class CreateLocation extends BasePage {
 
     }
 
-    public boolean verifyLocationlandmarkFieldisShowing() {
-        waitVisibility(landmark);
-        if (driver.findElement(By.xpath("//textarea[@placeholder='Location landmark']")).isDisplayed()) {
+    public boolean verifyLocationlandmarkFieldisShowing() throws InterruptedException {
+        Thread.sleep(2000);
+        //waitVisibility(landmark);
+        if (driver.findElement(By.xpath("//textarea[@placeholder='Location Landmark']")).isDisplayed()) {
             System.out.println("Verification Successful - Location Landmark Field is Showing");
             return true;
         } else {
@@ -343,7 +344,7 @@ public class CreateLocation extends BasePage {
     }
 
     public boolean verifyLatitudeFieldisShowing() {
-        waitVisibility(landmark);
+        //waitVisibility(landmark);
         if (driver.findElement(By.xpath("//input[@placeholder='Latitude']")).isDisplayed()) {
             System.out.println("Verification Successful - Latitude Field is Showing in Location Coordinate Section");
             return true;
@@ -355,7 +356,7 @@ public class CreateLocation extends BasePage {
     }
 
     public boolean verifyLongitudeFieldisShowing() {
-        waitVisibility(landmark);
+//        waitVisibility(landmark);
         if (driver.findElement(By.xpath("//input[@placeholder='Longitude']")).isDisplayed()) {
             System.out.println("Verification Successful - Longitude Field is Showing in Location Coordinate Section");
             return true;

@@ -86,7 +86,7 @@ public class SearchCompany extends BasePage{
     public boolean ClickonApplyButton() throws InterruptedException {
         Thread.sleep(2000);
         waitelemtclickable(applybtn);
-        waitVisibility(applybtn);
+        //waitVisibility(applybtn);
         click(applybtn);
         return true;
     }

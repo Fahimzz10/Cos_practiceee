@@ -421,7 +421,6 @@ public class EditPropertyCases extends BaseTest {
         CreateProperty createProperty=new CreateProperty(driver);
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
-        CreateCompany company = new CreateCompany(driver);
         CreateEntity createEntity=new CreateEntity(driver);
         EditCompany editCompany= new EditCompany(driver);
         EditProperty editProperty= new EditProperty(driver);
@@ -934,13 +933,12 @@ public class EditPropertyCases extends BaseTest {
 
     @Test(priority = 45)//Done
     @TestParameters(testCaseId = {"TC-88"})
-    public void TC_88_VerifyEditPropertyDrawerClosedAfterPressingDiscardbuttonFromConfirmationPopup() throws InterruptedException, IOException {
+    public void TC_88_VerifyEditPropertyDrawerClosedAfterPressingDiscardbuttonFromConfirmationPopup() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         EditCompany editCompany= new EditCompany(driver);
         EditProperty editProperty=new EditProperty(driver);
         CreateProperty properties= new CreateProperty(driver);
-        CreateEntity createentity=new CreateEntity(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.GotoDashboard());

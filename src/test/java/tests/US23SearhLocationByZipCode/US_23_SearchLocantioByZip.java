@@ -346,7 +346,7 @@ public class US_23_SearchLocantioByZip extends BaseTest {
         Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchCompany.ClickonResetButton());
-        Assert.assertTrue(searchCompany.ClickonApplyButton());
+//        Assert.assertTrue(searchCompany.ClickonApplyButton());
     //    Assert.assertTrue(searchLocation.verifyLocationPageHasresettoDefaultData());
         Assert.assertTrue(searchLocation.verifyZipcodeTagsareNotShowingonLocationPageAfterPressingResetButton());
     }
@@ -377,7 +377,7 @@ public class US_23_SearchLocantioByZip extends BaseTest {
         Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchCompany.ClickonResetButton());
-        Assert.assertTrue(searchCompany.ClickonApplyButton());
+//        Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchLocation.verifyPageHasResettoDefaultData());
 
     }
@@ -472,11 +472,8 @@ public class US_23_SearchLocantioByZip extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchLocation searchLocation=new SearchLocation(driver);
-        SearchEntity searchEntity=new SearchEntity(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
-        CreateLocation createLocation=new CreateLocation(driver);
-        SearchandFilterProperties searchandfilter=new SearchandFilterProperties(driver);
-        CreateProperty properties = new CreateProperty(driver);
+        CreateLocation createLocation=new CreateLocation(driver);;
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.GotoDashboard());

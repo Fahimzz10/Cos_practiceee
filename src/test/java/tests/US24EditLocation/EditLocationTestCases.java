@@ -61,11 +61,11 @@ public class EditLocationTestCases extends BaseTest {
         CreateLocation createLocation=new CreateLocation(driver);
         EditLocation editLocation=new EditLocation(driver);
         loginPage.VerifyValidLogin();
-        Assert.assertTrue(dashboard.RefreshBrowser());
-        /*Assert.assertTrue(dashboard.GotoDashboard());
+        /*Assert.assertTrue(dashboard.RefreshBrowser());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickonLocations());*/
-        Assert.assertTrue(editLocation.clickonDetailsButton());
+        //Assert.assertTrue(editLocation.clickonDetailsButton());
         Assert.assertTrue(createLocation.verifySelectCompanyFieldisShowing());
         Assert.assertTrue(createLocation.verifySelectPropertyFieldisShowing());
         Assert.assertTrue(createLocation.verifyLocationTitleFieldisShowing());
@@ -77,18 +77,17 @@ public class EditLocationTestCases extends BaseTest {
     @TestParameters(testCaseId = {"TC-4"})
     public void TC_4_VerifyAlltheOptionaldFieldHaspopulatedAfterClickingonEditButton() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        Dashboard dashboard=new Dashboard(driver);
         CreateCompany company = new CreateCompany(driver);
         EditCompany editCompany= new EditCompany(driver);
         EditEntity editEntity= new EditEntity(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         EditLocation editLocation=new EditLocation(driver);
         loginPage.VerifyValidLogin();
-        Assert.assertTrue(dashboard.RefreshBrowser());
+        //Assert.assertTrue(dashboard.RefreshBrowser());
        /* Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickonLocations());*/
-        Assert.assertTrue(editLocation.clickonDetailsButton());
+        //Assert.assertTrue(editLocation.clickonDetailsButton());
         Assert.assertTrue(createLocation.verifyLocationlandmarkFieldisShowing());
         Assert.assertTrue(createLocation.verifyUnassignedChargerSectionisShowing());
         Assert.assertTrue(createLocation.verifyAssignedChargerSectionisShowing());

@@ -23,8 +23,8 @@ public class EditProperty extends BasePage {
     By harwareprovidereditbtn = By.xpath("//body[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/form[1]/div[4]/div[1]/div[2]/button[1]");
     //By harwareprovidereditbtn1 = By.xpath("(//button[@type='button'][contains(.,'Edit')])[3]");
     By feeseditbtn = By.xpath("(//button[@class='ant-btn ant-btn-default'])[4]");
-    By crossbtn = By.xpath("(//span[@aria-label='close-circle'])[2]");
-    By entitycrossbtn = By.xpath("(//span[@aria-label='close-circle'])[3]");
+    By crossbtn = By.xpath("(//span[@aria-label='close-circle'])[1]");
+    By entitycrossbtn = By.xpath("(//span[@aria-label='close-circle'])[2]");
     By saveproperty = By.xpath("//button[contains(.,'Save Property')]");
     By companynameerrmsg = By.xpath("//div[@role='alert'][contains(.,'Company is required')]");
     By entitynameerrmsg = By.xpath("//div[@role='alert'][contains(.,'Entity is required')]");

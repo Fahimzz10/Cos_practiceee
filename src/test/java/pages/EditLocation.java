@@ -13,7 +13,7 @@ public class EditLocation extends BasePage{
 
     By deactivatebutton = By.xpath("//button[contains(.,'Deactivate Location')]");
     By propertyeditbtn = By.xpath("//button[@class='propertyEditBtn cursor']");
-    By editbtn = By.xpath("(//span[contains(.,'Details')])[1]");
+    By editbtn = By.xpath("(//span[contains(.,'Edit')])[1]");
     By detailsbtn = By.xpath("(//span[contains(.,'Details')])[2]");
     By companydropdown = By.xpath("(//span[contains(@class,'ant-select-selection-item')])[1]");
     By propertydropdown = By.xpath("(//span[contains(@class,'ant-select-selection-item')])[2]");
@@ -37,7 +37,7 @@ public class EditLocation extends BasePage{
         driver.manage().timeouts().implicitlyWait(05, TimeUnit.SECONDS);
         // waitelementtobedisplayed(editcompanybtn);
         //  wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("(//span[contains(.,'Edit')])[2]")));
-        click(detailsbtn);
+        click(editbtn);
         return true;
     }
 
@@ -246,13 +246,15 @@ public class EditLocation extends BasePage{
 
     public boolean verifyEditDetailsButtonHasDisplayed() {
         createCompany.waitForSpinner();
-        if( driver.findElement(By.xpath("(//span[contains(.,'Details')])[2]")).isDisplayed())
+        if( driver.findElement(By.xpath("(//span[contains(.,'Edit')])[2]")).isDisplayed())
         {
             System.out.println("Edit button has displayed");
+            return true;
         }else{
             System.out.println("Something Went Wrong!!");
+            return false;
         }
-        return true;
+
     }
 
     public boolean verifyEditLocationDrawerHasClosed() throws InterruptedException {

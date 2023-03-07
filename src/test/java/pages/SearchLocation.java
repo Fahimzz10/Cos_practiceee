@@ -30,9 +30,9 @@ public class SearchLocation extends BasePage{
     By loadmorebtn = By.xpath("//span[contains(.,'Load 10 More')]");
     By advancefilterdrawer = By.xpath("//span[contains(.,'Advanced Filter')]");
     By propertydropdown = By.xpath("(//div[@class='ant-select-selection-overflow'])[2]");
-    By dropdown = By.xpath("(//input[@role='combobox'])[1]");
+    By dropdown = By.xpath("(//input[@role='combobox'])[2]");
     By zipdropdown = By.xpath("(//div[@class='ant-select-selection-overflow'])[3]");
-    By zipcodedropdown= By.xpath("(//input[@role='combobox'])[2]");
+    By zipcodedropdown= By.xpath("(//input[@role='combobox'])[3]");
     By propertyname = By.xpath("//div[@class='ant-select-item-option-content'][contains(.,'East Avenue')]");
     By propertyname1 = By.xpath("(//div[contains(@class,'ant-select-item-option-content')])[2]");
     By cmpnyname = By.xpath("//div[@class='ant-select-item-option-content'][contains(.,'Rich Information Technology')]");
@@ -44,6 +44,7 @@ public class SearchLocation extends BasePage{
     By selectzip = By.xpath("//div[@class='ant-select-item-option-content'][contains(.,'99950')]");
     By drawertitle = By.xpath("//span[@class='drawerTitle'][contains(.,'Advanced Filter')]");
     By removebtn = By.xpath("(//*[name()='svg'])[19]");
+    By filterclosebtn = By.xpath("(//span[@class='ant-select-selection-item-remove'])[2]");
     By removebtn1 = By.xpath("//span[@title='East Avenue']//span[@aria-label='close']//*[name()='svg']");
     By removezipbtn = By.xpath("//span[@class='ant-select-selection-item-remove']//span[@aria-label='close']");
     By removezipbtn1 = By.xpath("//span[@title='99950']//span[@aria-label='close']");
@@ -155,7 +156,7 @@ public class SearchLocation extends BasePage{
      waitVisibility(removebtn);
    //  waitelementtobedisplayed(removebtn);
    //  waitelemtclickable(removebtn);
-     click(removebtn);
+     click(filterclosebtn);
      return true;
     }
 
@@ -228,11 +229,12 @@ public class SearchLocation extends BasePage{
     }
 
     public boolean writePropertyName() throws InterruptedException {
-       driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-       waitelemtclickable(dropdown);
-        waitVisibility(dropdown);
+        Thread.sleep(3000);
+       //driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+       //waitelemtclickable(dropdown);
+        //waitVisibility(dropdown);
         writeText(dropdown,"East Avenue");
-      //  new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.id("(//input[@role='combobox'])[2]"))).sendKeys(prop.getProperty("East Avenue"));
+        //new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.id("(//input[@role='combobox'])[2]"))).sendKeys(prop.getProperty("East Avenue"));
         return true;
     }
 
@@ -242,12 +244,13 @@ public class SearchLocation extends BasePage{
        for(WebElement element : elements) {
            if(element.isDisplayed()) {
                System.out.println("Property is same as Selected from the Advance Filter Drawer i.e:"+ element.getText() );
+               return true;
            }else {
                System.out.println("Something went Wrong:" +element.getText() );
 
            }
        }
-       return true;
+       return false;
 
         }
 
@@ -581,8 +584,8 @@ public class SearchLocation extends BasePage{
         return true;
     }
 
-    public boolean verifyLocationPageHasResettoDefaultalueAfterClickingonClearAllTag() {
-        waitVisibility(createCompany.spinner);
+    public boolean verifyLocationPageHasResettoDefaultalueAfterClickingonClearAllTag() throws InterruptedException {
+        Thread.sleep(2000);
         try{
             WebElement tag1= driver.findElement(By.xpath("//span[@class='ant-tag tagCss mb-10'][contains(.,'Rich Information Technology')]"));
             WebElement tag2= driver.findElement(By.xpath("//span[@class='ant-tag tagCss mb-10'][contains(.,'Lark Homes')]"));
@@ -697,8 +700,8 @@ public class SearchLocation extends BasePage{
     }*/
     public boolean verifyPropertyTagsareShowingonLocationPage() throws InterruptedException {
         createCompany.waitForSpinner();
-        WebElement tag1= driver.findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[1]"));
-        WebElement tag2= driver.findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[2]"));
+        WebElement tag1= driver.findElement(By.xpath("(//span[@class='ant-tag'])[1]"));
+        WebElement tag2= driver.findElement(By.xpath("(//span[@class='ant-tag'])[2]"));
 
         if(tag1.isDisplayed() && tag2.isDisplayed())
         {
@@ -762,13 +765,14 @@ public class SearchLocation extends BasePage{
 
     public boolean verifyLodMoreButtonisShowing() {
         createCompany.waitForSpinner();
-        if( driver.findElement(By.xpath("//button[contains(.,'Load 10 More')]")).isDisplayed())
+        if( driver.findElement(By.xpath("//button[contains(.,'Load 3 More')]")).isDisplayed())
         {
             System.out.println("Verificatin Sucessful!!!Load More Button is Showing");
+            return true;
         }else{
             System.out.println("Something Went Wrong!!");
+            return false;
         }
-        return true;
     }
 
     public boolean verifyCountoAfterSelectingPropertyFromAdvanceFilterDrawer() {
@@ -970,18 +974,19 @@ public class SearchLocation extends BasePage{
     public boolean verifyTagsareShowing() {
        // createCompany.waitForSpinner();
         driver.manage().timeouts().implicitlyWait(8000, TimeUnit.MILLISECONDS);
-        WebElement tag1= driver. findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[1]"));
-        WebElement tag2= driver. findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[2]"));
+        WebElement tag1= driver. findElement(By.xpath("(//span[@class='ant-tag'])[1]"));
+        WebElement tag2= driver. findElement(By.xpath("(//span[@class='ant-tag'])[2]"));
 
         String lineseparator=System.getProperty("line.separator");
 
         if(tag1.isDisplayed()&& tag2.isDisplayed())
         {
             System.out.println("Selected tags are Showing:"+ tag1.getText() + lineseparator + tag2.getText());
+            return true;
         }else{
             System.out.println("Verification UnSuccessful!!!Something Went Wrong!!");
+            return false;
         }
-        return true;
     }
 
 
@@ -990,19 +995,20 @@ public class SearchLocation extends BasePage{
     public boolean verifyTagsareShowingonLocationPage() throws InterruptedException {
         Thread.sleep(3000);
         createCompany.waitForSpinner();
-        WebElement tag1= driver. findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[1]"));
-        WebElement tag2= driver. findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[2]"));
-        WebElement tag3= driver. findElement(By.xpath("(//span[@class='ant-tag tagCss mb-10'])[3]"));
+        WebElement tag1= driver. findElement(By.xpath("(//span[@class='ant-tag'])[1]"));
+        WebElement tag2= driver. findElement(By.xpath("(//span[@class='ant-tag'])[2]"));
+        WebElement tag3= driver. findElement(By.xpath("(//span[@class='ant-tag cursor tagCss clearAllTag'])"));
 
         String lineseparator=System.getProperty("line.separator");
 
         if(tag1.isDisplayed()&& tag2.isDisplayed()&&tag3.isDisplayed())
         {
             System.out.println("Selected tags are Showing:"+ tag1.getText() + lineseparator + tag2.getText() + lineseparator + tag3.getText());
+            return true;
         }else{
             System.out.println("Verification UnSuccessful!!!Something Went Wrong!!");
+            return false;
         }
-        return true;
     }
 
 

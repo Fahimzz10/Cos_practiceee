@@ -22,7 +22,6 @@ public class US_22_SearchLocantioByProperty extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchLocation searchLocation=new SearchLocation(driver);
-        EditCompany editCompany=new EditCompany(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         SearchandFilterProperties searchandfilter=new SearchandFilterProperties(driver);
@@ -150,8 +149,8 @@ public class US_22_SearchLocantioByProperty extends BaseTest {
         SearchandFilterProperties searchandfilter=new SearchandFilterProperties(driver);
         CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
-         Assert.assertTrue(dashboard.GotoDashboard());
-        //  Assert.assertTrue(dashboard.RefreshBrowser());
+        Assert.assertTrue(dashboard.GotoDashboard());
+        //Assert.assertTrue(dashboard.RefreshBrowser());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickonLocations());
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
@@ -171,7 +170,6 @@ public class US_22_SearchLocantioByProperty extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchLocation searchLocation=new SearchLocation(driver);
-        EditCompany editCompany=new EditCompany(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         SearchandFilterProperties searchandfilter=new SearchandFilterProperties(driver);
@@ -302,7 +300,7 @@ public class US_22_SearchLocantioByProperty extends BaseTest {
         Assert.assertTrue(searchLocation.verifyCountoAfterSelectingPropertyFromAdvanceFilterDrawer());*/
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchCompany.ClickonResetButton());
-        Assert.assertTrue(searchCompany.ClickonApplyButton());
+//        Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchLocation.verifyCountoAfterRemovingPropertyFilterFromAdvanceFilterDrawer());
 
     }

@@ -38,7 +38,7 @@ public class EditCompany extends BasePage {
 
     public boolean ClickonEditbutton () throws InterruptedException {
         company.waitForSpinner();
-        driver.manage().timeouts().implicitlyWait(05, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(06, TimeUnit.SECONDS);
       // waitelementtobedisplayed(editcompanybtn);
         //  wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("(//span[contains(.,'Edit')])[2]")));
         click(editcompanybtn);

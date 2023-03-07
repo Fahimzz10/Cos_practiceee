@@ -247,7 +247,7 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
 
     @Test(priority = 32)//Done
     @TestParameters(testCaseId = {"TC-52"})
-    public void TC_52_VerifyCountonLocationPageWhenAdminClicksonResetAllButtonAfterSelectingMultipleTagsFromAdvanceFilter () throws InterruptedException, IOException {
+    public void TC_52_VerifyCountonLocationPageWhenAdminClicksonResetAllButtonAfterSelectingMultipleTagsFromAdvanceFilter () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
         SearchLocation searchLocation=new SearchLocation(driver);
@@ -258,7 +258,7 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
         CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-       /* Assert.assertTrue(dashboard.GotoDashboard());
+        /*Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
         Assert.assertTrue(dashboard.clickonLocations());
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
@@ -271,7 +271,6 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
         Assert.assertTrue(searchLocation.verifyCountAfterAppyingCompanyFilter());*/
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchCompany.ClickonResetButton());
-        Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchLocation.verifyCountonLocationPage());
     }
 
@@ -341,7 +340,6 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
         SearchLocation searchLocation=new SearchLocation(driver);
         SearchEntity searchEntity=new SearchEntity(driver);
         SearchCompany searchCompany=new SearchCompany(driver);
-        CreateLocation createLocation=new CreateLocation(driver);
         SearchandFilterProperties searchandfilter=new SearchandFilterProperties(driver);
         CreateProperty properties = new CreateProperty(driver);
         loginPage.VerifyValidLogin();
@@ -391,7 +389,7 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
 
 
 
-   /* @Test(priority = 4)//Done
+    @Test(priority = 37)//Done
     @TestParameters(testCaseId = {"TC-60"})
     public void TC_60_VerifyLoadMorebuttonisShowingonLocationPageAfterClickingonClearAllButton () throws InterruptedException, IOException {
         LoginPage loginPage = new LoginPage(driver);
@@ -409,12 +407,13 @@ public class US_21_SearchLocantioByCompany extends BaseTest {
         Assert.assertTrue(searchCompany.ClickonAdvanceFilterButton());
         Assert.assertTrue(searchandfilter.clickononCompanyDropdown());
         Assert.assertTrue(searchLocation.selectCompnayNameonAdvanceFilter());
+        Assert.assertTrue(searchLocation.clickOnDrawerTitle());
         Assert.assertTrue(searchandfilter.clickononCompanyDropdown());
         Assert.assertTrue(searchLocation.selectAnotherCompnayNameonAdvanceFilter());
         Assert.assertTrue(searchCompany.ClickonApplyButton());
         Assert.assertTrue(searchEntity.ClickonClearAllTag());
         Assert.assertTrue(searchLocation.verifyLodMoreButtonisShowing());
-    }*/
+    }
 
 
 
