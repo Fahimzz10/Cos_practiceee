@@ -114,21 +114,20 @@ public class EditLocationTestCases extends BaseTest {
 
     }
 
-   /* @Test(priority = 6)//Done
+   @Test(priority = 6)//Done
     @TestParameters(testCaseId = {"TC-7"})
     public void TC_7_VerifylocationStatusisActiveonEditLocationDrawer() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
-        CreateCompany company = new CreateCompany(driver);
         EditCompany editCompany= new EditCompany(driver);
         EditEntity editEntity= new EditEntity(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         EditLocation editLocation=new EditLocation(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        *//*Assert.assertTrue(dashboard.GotoDashboard());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickonLocations());*//*
+        Assert.assertTrue(dashboard.clickonLocations());
         Assert.assertTrue(editLocation.clickonDetailsButton());
         Assert.assertTrue(editLocation.verifyStatusisActive());
 
@@ -147,14 +146,14 @@ public class EditLocationTestCases extends BaseTest {
         EditLocation editLocation=new EditLocation(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-         *//*Assert.assertTrue(dashboard.GotoDashboard());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickonLocations());*//*
+        Assert.assertTrue(dashboard.clickonLocations());
         Assert.assertTrue(editLocation.clickonDetailsButton());
         Assert.assertTrue(editLocation.verifDeactivateLocationButtonIsShowing());
 
 
-    }*/
+    }
 
     @Test(priority = 8)//Done
     @TestParameters(testCaseId = {"TC-10"})
@@ -163,7 +162,6 @@ public class EditLocationTestCases extends BaseTest {
         Dashboard dashboard=new Dashboard(driver);
         CreateCompany company = new CreateCompany(driver);
         EditCompany editCompany= new EditCompany(driver);
-        EditEntity editEntity= new EditEntity(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         EditLocation editLocation=new EditLocation(driver);
         loginPage.VerifyValidLogin();
@@ -232,7 +230,6 @@ public class EditLocationTestCases extends BaseTest {
     public void TC_15_CheckWhathappensWhenAdminChangetheLocationTitileFromEditLocationDrawer() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
-        CreateCompany company = new CreateCompany(driver);
         EditCompany editCompany= new EditCompany(driver);
         EditEntity editEntity= new EditEntity(driver);
         CreateLocation createLocation=new CreateLocation(driver);
@@ -372,25 +369,23 @@ public class EditLocationTestCases extends BaseTest {
     public void TC_21_Checkwhathappenstotheassignedchargersectionwhenadminchangethepropertyoflocation  () throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Dashboard dashboard=new Dashboard(driver);
-        CreateCompany company = new CreateCompany(driver);
         EditCompany editCompany= new EditCompany(driver);
-        EditEntity editEntity= new EditEntity(driver);
         CreateLocation createLocation=new CreateLocation(driver);
         EditLocation editLocation=new EditLocation(driver);
         CreateProperty properties = new CreateProperty(driver);
         SearchLocation searchLocation= new SearchLocation(driver);
         loginPage.VerifyValidLogin();
         Assert.assertTrue(dashboard.RefreshBrowser());
-        /*Assert.assertTrue(dashboard.GotoDashboard());
+        Assert.assertTrue(dashboard.GotoDashboard());
         Assert.assertTrue(dashboard.clickonPropertiesFromLeftMenu());
-        Assert.assertTrue(dashboard.clickonLocations());*/
-       /* Assert.assertTrue(searchLocation.enterLocationName(prop.getProperty("Locationwithchargers")));
-        Assert.assertTrue(editCompany.ClickonSearchButton());*/
+        Assert.assertTrue(dashboard.clickonLocations());
+        Assert.assertTrue(searchLocation.enterLocationName(prop.getProperty("Locationwithchargers")));
+        Assert.assertTrue(editCompany.ClickonSearchButton());
         Assert.assertTrue(editLocation.clickonDetailsButton());
         Assert.assertTrue(editLocation.clickonEditbuttonFromPropertyInfoSection());
         Assert.assertTrue(editLocation.clickonCompanyDropdown());
         Assert.assertTrue(properties.selectCompanyNameFromSelectCompanyDropdown());
-        Assert.assertTrue(createLocation.clickonPropertyDropdown());
+        Assert.assertTrue(editLocation.clickonPropertyDropdown());
         Assert.assertTrue(createLocation.writePropertyName(prop.getProperty("Propertywithchargers")));
         Assert.assertTrue(createLocation.clickOnPropertyName());
         Assert.assertTrue(editLocation.verifyAssignedChargerSectionIsShowingEmpty());
@@ -420,7 +415,7 @@ public class EditLocationTestCases extends BaseTest {
         Assert.assertTrue(editLocation.clickonEditbuttonFromPropertyInfoSection());
         Assert.assertTrue(editLocation.clickonCompanyDropdown());
         Assert.assertTrue(properties.selectCompanyNameFromSelectCompanyDropdown());
-        Assert.assertTrue(createLocation.clickonPropertyDropdown());
+        Assert.assertTrue(editLocation.clickonPropertyDropdown());
         Assert.assertTrue(createLocation.writePropertyName(prop.getProperty("Propertywithchargers")));
         Assert.assertTrue(createLocation.clickOnPropertyName());
         Assert.assertTrue(editLocation.removeLocationTitile());

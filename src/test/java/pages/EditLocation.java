@@ -106,7 +106,7 @@ public class EditLocation extends BasePage{
 
     public boolean removeLocationFromSearchBar() throws InterruptedException {
         Thread.sleep(2000);
-        WebElement locationtitle= driver.findElement(By.xpath("//input[contains(@placeholder,'Search by location title & property name ')]"));
+        WebElement locationtitle= driver.findElement(By.xpath("//input[contains(@placeholder,'Search by location title & property name')]"));
         locationtitle.sendKeys(Keys.CONTROL + "a");
         locationtitle.sendKeys(Keys.DELETE);
         return true;

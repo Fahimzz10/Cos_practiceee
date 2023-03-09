@@ -55,7 +55,8 @@ public class EditChargerCosAdminUpdated extends BasePage {
 
 
     public boolean verifyEditButton() throws InterruptedException {
-        Thread.sleep(1000);
+        waitforPresence(CosAdminChargerList.EditButton);
+        Thread.sleep(3000);
         if (driver.findElement(CosAdminChargerList.EditButton).isDisplayed()){
             System.out.println("Edit Button is Showing");
             return true;
@@ -224,7 +225,6 @@ public class EditChargerCosAdminUpdated extends BasePage {
 //        String ToogleButtonStatusAfter = driver.findElement(UpdateChargerPropertyAdmin.ToggleButton).getAttribute(aria-checked);
         Random objGenerator = new Random();
         int randomNumber = objGenerator.nextInt(1000);
-        click(CreateCharger.Chargername);
         WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
         String EditedCharger = "Selenium "+randomNumber;
         click(CreateCharger.Chargername);;
@@ -422,18 +422,16 @@ public class EditChargerCosAdminUpdated extends BasePage {
     public boolean verifyChangeNameInAuditLog() throws InterruptedException{
         Random objGenerator = new Random();
         int randomNumber = objGenerator.nextInt(10000);
-        click(UpdateChargerPropertyAdmin.ToggleButton);
-        click(CreateCharger.Chargername);
         WebElement ChargerNameField = driver.findElement(CreateCharger.Chargername);
         String EditedCharger = "Selenium "+randomNumber;
-        click(CreateCharger.Chargername);;
+        click(CreateCharger.Chargername);
         ChargerNameField.sendKeys(Keys.CONTROL,"a");
         ChargerNameField.sendKeys(Keys.DELETE);
         ChargerNameField.sendKeys(EditedCharger);
         click(UpdateChargerPropertyAdmin.SaveCharger);
-        Thread.sleep(1000);
-        click(CosAdminChargerList.EditButton);
         Thread.sleep(2000);
+        click(CosAdminChargerList.EditButton);
+        Thread.sleep(10000);
         String Edchar = driver.findElement(ChangeNameAuditLog).getText();
         System.out.println(Edchar);
         if (Edchar.equals(EditedCharger)){

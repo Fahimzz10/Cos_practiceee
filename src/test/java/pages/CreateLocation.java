@@ -21,12 +21,12 @@ public class CreateLocation extends BasePage {
     By selectcompanydropdown = By.xpath("(//input[contains(@class,'ant-select-selection-search-input')])[1]");
     By selectpropertydropdown = By.xpath("(//input[contains(@class,'ant-select-selection-search-input')])[2]");
     By locationtitle = By.xpath("//textarea[@placeholder='Location Title']");
-    By landmark = By.xpath("//textarea[@placeholder='Location landmark']");
+    By landmark = By.xpath("//textarea[@placeholder='Location Landmark']");
     By locationmsg = By.xpath("//div[@class='locInfoText'][contains(.,'Customers will see this title when searching for a charging station')]");
     By locationlandmarkmsg = By.xpath("//div[@class='locInfoText'][contains(.,'For example, The location is just south of the front entrance. Etc. Use this area to give the first time users more context.')]");
     By locationcoordinatemsg = By.xpath("//div[@class='drawerInputTitle'][contains(.,'Confirm your location coordinates by using map')]");
     By confirmlocationbtn = By.xpath("//button[contains(.,'Confirm Location')]");
-    By savelocationbtn = By.xpath("//button[contains(.,'Create Location')]");
+    By savelocationbtn = By.xpath("//span[normalize-space()='Save Location']");
     By createpropertylink = By.xpath("//span[contains(.,'Or, create a new property')]");
     By propertyname = By.xpath("(//div[@class='ant-select-item-option-content'])[11]");
     By locationtitlerrrms = By.xpath("//div[@role='alert'][contains(.,'Location Title is required')]");
@@ -64,9 +64,9 @@ public class CreateLocation extends BasePage {
 
     public boolean clickonPropertyDropdown() throws InterruptedException {
         Thread.sleep(3000);
-        waitelementtobeEnabled(selectpropertydropdown);
-        waitelemtclickable(selectpropertydropdown);
-        waitVisibility(selectpropertydropdown);
+        //waitelementtobeEnabled(selectpropertydropdown);
+        //waitelemtclickable(selectpropertydropdown);
+        //waitVisibility(selectpropertydropdown);
         click(selectpropertydropdown);
         return true;
     }
