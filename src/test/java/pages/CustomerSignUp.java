@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class CustomerSignUp extends BasePage{
 
     RandomData rdata = new RandomData();
 
-//    public static By PhoneNumber = By.xpath("//button[@class='ant-btn ant-btn-primary ant-btn-block common-btn-primary mt-15 mb-15 guestButton']");
+    //    public static By PhoneNumber = By.xpath("//button[@class='ant-btn ant-btn-primary ant-btn-block common-btn-primary mt-15 mb-15 guestButton']");
 //    public static By InvalidQrAlertmsg = By.xpath("//div[@class='ant-alert-description']");
 //    public static By title = By.xpath("//div[@class='pageTitle']");
     public static By ProvidePhnNum = By.xpath("(//div[@class='providePhone'])[2]");
@@ -32,6 +33,7 @@ public class CustomerSignUp extends BasePage{
     public static By Password = By.xpath("//input[@id='basic_password']");
     public static By ConfirmPassword = By.xpath("//input[@placeholder='Confirm password']");
     public static By AgreeCheckBox= By.xpath("//span[@class='ant-checkbox']");
+    public static By AgreeCheckBoxChecked= By.xpath("//span[@class='ant-checkbox ant-checkbox-checked']");
     public static By SignUpConfirm = By.xpath("//button[@type='submit']");
     public static By ErrorMsgFName = By.xpath("//div[contains(text(),'First Name is required')]");
     public static By ErrorMsgLName = By.xpath("//div[contains(text(),'Last Name is required')]");
@@ -41,6 +43,9 @@ public class CustomerSignUp extends BasePage{
     public static By ErrorMsgInvalidEmail = By.xpath("//div[@role='alert'][contains(text(),'Invalid email')]");
     public static By ErrorMsgInvalidZipCode = By.xpath("//div[@role='alert'][contains(text(),'Please provide a valid Zip Code')]");
     public static By ErrorMsgNoPassword = By.xpath("//div[@role='alert'][contains(text(),'Password is required')]");
+    public static By ErrorMsgNotSelectingTC = By.xpath("//div[@role='alert'][contains(text(),'Accepting terms and conditions is required')]");
+    public static By ErrorForLessDigitPass = By.xpath("//div[@class='text-left mt-10 wrongPassSuggestion']");
+    public static By VerifyEmailTitle = By.xpath("//div[@class='h1-text titleLogin mt-30']");
 
 
 
@@ -48,13 +53,18 @@ public class CustomerSignUp extends BasePage{
 
 
     public boolean GoToAvailableCharger () throws InterruptedException{
-        driver.get("https://test-app.chargeonsite.com/charger/fOwfk2");
-        urlCheck("https://test-app.chargeonsite.com/charger/fOwfk2");
+        driver.get("https://beta-app.chargeonsite.com/charger/bz8-jP");
+        urlCheck("https://beta-app.chargeonsite.com/charger/bz8-jP");
+        return true;
+    }
+    public boolean FieldClear(By element) throws InterruptedException{
+        driver.findElement(element).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         return true;
     }
 
     public boolean VerifyNumberVerificationPage() throws InterruptedException{
         Thread.sleep(5000);
+        waitforPresence(ProvidePhnNum);
         String s = driver.findElement(ProvidePhnNum).getText();
         System.out.println(s);
         if (driver.findElement(ProvidePhnNum).isDisplayed()){
@@ -183,6 +193,47 @@ public class CustomerSignUp extends BasePage{
         System.out.println(PasswordFieldErrMsg);
         String Expected = "Password is required";
         if (PasswordFieldErrMsg.equals(Expected)){
+            System.out.println("Successful");
+            return true;
+        }
+        else {
+            System.out.println("Wrong");
+            return false;
+        }
+    }
+    public boolean VerifyWithLessThanEightDigitPassword() throws InterruptedException{
+        Thread.sleep(1000);
+        String PasswordFieldErrMsg = driver.findElement(ErrorForLessDigitPass).getAttribute("class");
+        System.out.println(PasswordFieldErrMsg);
+        if (driver.findElement(ErrorForLessDigitPass).isDisplayed()){
+            System.out.println("Successful");
+            return true;
+        }
+        else {
+            System.out.println("Wrong");
+            return false;
+        }
+    }
+    public boolean VerifyWithoutSelectingCheckboxOfTC() throws InterruptedException{
+        Thread.sleep(1000);
+        String ErrorMsg = driver.findElement(ErrorMsgNotSelectingTC).getText();
+        System.out.println(ErrorMsg);
+        String Expected = "Accepting terms and conditions is required";
+        if (ErrorMsg.equals(Expected)){
+            System.out.println("Successful");
+            return true;
+        }
+        else {
+            System.out.println("Wrong");
+            return false;
+        }
+
+    }
+
+    public boolean VerifyEmailVerificationTitle() throws InterruptedException{
+        Thread.sleep(1000);
+        waitforPresence(VerifyEmailTitle);
+        if (driver.findElement(VerifyEmailTitle).isDisplayed()){
             System.out.println("Successful");
             return true;
         }
